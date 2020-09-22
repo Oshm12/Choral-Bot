@@ -2,7 +2,7 @@ require('dotenv').config()
 const Discord = require("discord.js")
 const package = require("./package.json")
 const config = package.config
-const schedule = require('node-schedule');
+
 
 const bot = new Discord.Client()
 
@@ -14,11 +14,9 @@ bot.on('ready', () => {
 
 bot.on('guildMemberAdd', member => {
   // Send the message to a designated channel on a server:
-  const channel = member.guild.channels.cache.find(ch => ch.name === 'member-log');
-  // Do nothing if the channel wasn't found on this server
-  if (!channel) return;
-  // Send the message, mentioning the member
+
   member.send(`Welcome to the Dublin University Choral Society discord server, ${member}`);
+  console.log("NEW MEMBER ARRIVED: ${member} ")
 });
 
 bot.on('message', msg => {
