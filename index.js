@@ -33,20 +33,19 @@ bot.on('guildMemberAdd', member => {
   member.send(`Welcome to the Dublin University Choral Society discord server, ${member}.
                We'll use this through the semmester for fun online events.`);
 
-  member.send(`At the moment you cannot see most of the server channels, click on one of the "SATB" reacts (letters) beneath this message,
-                S for a Soprano, A for an Alto, T for a Tenor and B for Bass. If you do not know, click on the "O".`)
+  member.send(`At the moment you cannot see most of the server channels, click/react to the O below to be able to see things`)
       .then(sentEmbed => {
-                sentEmbed.react("🇸")
+            /*    sentEmbed.react("🇸")
                 sentEmbed.react("🇦")
                 sentEmbed.react("🇹")
-                sentEmbed.react("🇧")
+                sentEmbed.react("🇧") */
                 sentEmbed.react("🅾️")
 
               console.log("Reacts added");
 
               bot.on('messageReactionAdd', (reaction, user) => {
 
-
+/*
                       if (user.bot) return;
 
                       console.log("Removing Role");
@@ -71,7 +70,7 @@ bot.on('guildMemberAdd', member => {
                           console.log("WOULD ADD b");
                           member.addRole(bass_role);
                       }
-
+*/
                       if(reaction.emoji.name === "🅾️" ) {
                           console.log("Not adding anymore");
 
@@ -88,7 +87,7 @@ bot.on('guildMemberAdd', member => {
 
                   console.log("Removing Role");
                   member.removeRole(member_role);
-
+/*
                   if(reaction.emoji.name === "🇸" ) {
                       console.log("WOULD remove s");
                       member.removeRole(soprano_role);
@@ -107,7 +106,7 @@ bot.on('guildMemberAdd', member => {
                       console.log("WOULD remove b");
                       member.removeRole(bass_role);
                   }
-
+*/
                   if(reaction.emoji.name === "🅾️" ) {
                       console.log("Not adding anymore");
 

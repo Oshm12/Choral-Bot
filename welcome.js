@@ -1,6 +1,7 @@
 
-const welcome =  async (member, bot) => {
-    console.log(member);
+const welcome =  async (member,bot ) => {
+
+    //console.log(member.guild);
     member.send(`Welcome to the Dublin University Choral Society discord server, ${member}.
                  We'll use this through the semmester for fun online events.`);
 
