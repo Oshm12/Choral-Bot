@@ -76,7 +76,7 @@ bot.on('guildMemberAdd', member => {
 
                       }
 
-                      member.send("Welcome to the server, you can see all now. If you choose the wrong role un-react to the mistaken role and then re-choose")
+                      member.send("Welcome to the server, you can see all now. Look around and find the `bot-channel`, this is where you can add the role corresponding to your vocal part. Enjoy the server.");
 
 
               });
@@ -141,33 +141,47 @@ bot.on('message', msg => {
     }
 
     if (command === 'bass') {
-        if(msg.member.roles.has(bass_role)){
+        console.log("HAS ROLE TEST:  " + msg.member.roles.has(bass_role.id));
+        //console.log(msg.member.roles);
+        console.log("Role command");
+        if(msg.member.roles.has(bass_role.id)){
+            console.log("Remove Role");
             msg.member.removeRole(bass_role);
         }
         else{
+            console.log("Adding Role");
             msg.member.addRole(bass_role);
         }
     }
     if (command === 'tenor') {
-        if(msg.member.roles.has(tenor_role)){
+        console.log("Role command");
+        if(msg.member.roles.has(tenor_role.id)){
+            console.log("Remove Role");
             msg.member.removeRole(tenor_role);
         }
         else{
+            console.log("Adding Role");
             msg.member.addRole(tenor_role);
         }
     }if (command === 'alto') {
-        if(msg.member.roles.has(alto_role)){
+        console.log("Role command");
+        if(msg.member.roles.has(alto_role.id)){
+            console.log("Remove Role");
             msg.member.removeRole(alto_role);
         }
         else{
+            console.log("Adding Role");
             msg.member.addRole(alto_role);
         }
     }if (command === 'soprano') {
-        if(msg.member.roles.has(soprano)){
-            msg.member.removeRole(soprano);
+        console.log("Role command");
+        if(msg.member.roles.has(soprano_role.id)){
+            console.log("Remove Role");
+            msg.member.removeRole(soprano_role);
         }
         else{
-            msg.member.addRole(soprano);
+            console.log("Adding Role");
+            msg.member.addRole(soprano_role);
         }
     }
 
