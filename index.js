@@ -119,8 +119,57 @@ bot.on('guildMemberAdd', member => {
 
 });
 
-bot.on('message', message => {
+bot.on('message', msg => {
     //not doing any commands
+
+    const soprano_role = msg.member.guild.roles.get("757617954111356978");
+    const alto_role = msg.member.guild.roles.get("757617933349552208");
+    const tenor_role = msg.member.guild.roles.get("757617910305914911");
+    const bass_role = msg.member.guild.roles.get("757617888130629712");
+
+    if (msg.author.bot) return
+	if (!msg.content.startsWith(config.prefix)) return
+
+	let command = msg.content.split(" ")[0]
+	command = command.slice(config.prefix.length)
+	command = command.toLowerCase()
+
+	let args = msg.content.split(" ").slice(1)
+
+    if (command === 'version' || command === 'v') {
+        msg.channel.send(`Version: ${package.version}`)
+    }
+
+    if (command === 'bass') {
+        if(msg.member.roles.has(bass_role)){
+            msg.member.removeRole(bass_role);
+        }
+        else{
+            msg.member.addRole(bass_role);
+        }
+    }
+    if (command === 'tenor') {
+        if(msg.member.roles.has(tenor_role)){
+            msg.member.removeRole(tenor_role);
+        }
+        else{
+            msg.member.addRole(tenor_role);
+        }
+    }if (command === 'alto') {
+        if(msg.member.roles.has(alto_role)){
+            msg.member.removeRole(alto_role);
+        }
+        else{
+            msg.member.addRole(alto_role);
+        }
+    }if (command === 'soprano') {
+        if(msg.member.roles.has(soprano)){
+            msg.member.removeRole(soprano);
+        }
+        else{
+            msg.member.addRole(soprano);
+        }
+    }
 
 
 });
