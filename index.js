@@ -30,8 +30,7 @@ bot.on('guildMemberAdd', member => {
   console.log(member_role);
   //welcome(member, bot);
   console.log("NEW MEMBER ARRIVED: ${member} ");
-  member.send(`Welcome to the Dublin University Choral Society discord server, ${member}.
-               We'll use this through the semmester for fun online events.`);
+  member.send(`Welcome to the Dublin University Choral Society discord server, ${member}. \nWe'll use this through the semmester for fun online events.`);
 
   member.send(`At the moment you cannot see most of the server channels, click/react to the O below to be able to see things`)
       .then(sentEmbed => {
@@ -44,7 +43,7 @@ bot.on('guildMemberAdd', member => {
               console.log("Reacts added");
 
               bot.on('messageReactionAdd', (reaction, user) => {
-
+                      if (user.bot) return;
 /*
                       if (user.bot) return;
 
@@ -73,7 +72,7 @@ bot.on('guildMemberAdd', member => {
 */
                       if(reaction.emoji.name === "🅾️" ) {
                           console.log("Not adding anymore");
-
+                          member.addRole(member_role);
                       }
 
                       member.send("Welcome to the server, you can see all now. Look around and find the `bot-channel`, this is where you can add the role corresponding to your vocal part. Enjoy the server.");
@@ -121,14 +120,14 @@ bot.on('guildMemberAdd', member => {
 
 bot.on('message', msg => {
     //not doing any commands
+    if (msg.author.bot) return
+	if (!msg.content.startsWith(config.prefix)) return
 
     const soprano_role = msg.member.guild.roles.get("757617954111356978");
     const alto_role = msg.member.guild.roles.get("757617933349552208");
     const tenor_role = msg.member.guild.roles.get("757617910305914911");
     const bass_role = msg.member.guild.roles.get("757617888130629712");
 
-    if (msg.author.bot) return
-	if (!msg.content.startsWith(config.prefix)) return
 
 	let command = msg.content.split(" ")[0]
 	command = command.slice(config.prefix.length)
